@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="styles/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-section">
+        <div class="login-container">
+          <h1 style="font-size: 4rem; color: #333338">CONNECT</h1>
+          <p>
+            Sign up and get your account and start taking your feedback<br />from
+            your client on the easiest way
+          </p>
+
+          <div class="inputContainer">
+            <input
+              required="required"
+              id="emailField"
+              placeholder="Email"
+              type="email"
+              class="inputField"
+            />
+            <label class="usernameLabel" for="inputField">Email</label>
+            <svg
+              class="userIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="top: -21px"
+            >
+              <g id="style=stroke">
+                <g id="email">
+                  <path
+                    id="vector (Stroke)"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M3.88534 5.2371C3.20538 5.86848 2.75 6.89295 2.75 8.5V15.5C2.75 17.107 3.20538 18.1315 3.88534 18.7629C4.57535 19.4036 5.61497 19.75 7 19.75H17C18.385 19.75 19.4246 19.4036 20.1147 18.7629C20.7946 18.1315 21.25 17.107 21.25 15.5V8.5C21.25 6.89295 20.7946 5.86848 20.1147 5.2371C19.4246 4.59637 18.385 4.25 17 4.25H7C5.61497 4.25 4.57535 4.59637 3.88534 5.2371ZM2.86466 4.1379C3.92465 3.15363 5.38503 2.75 7 2.75H17C18.615 2.75 20.0754 3.15363 21.1353 4.1379C22.2054 5.13152 22.75 6.60705 22.75 8.5V15.5C22.75 17.393 22.2054 18.8685 21.1353 19.8621C20.0754 20.8464 18.615 21.25 17 21.25H7C5.38503 21.25 3.92465 20.8464 2.86466 19.8621C1.79462 18.8685 1.25 17.393 1.25 15.5V8.5C1.25 6.60705 1.79462 5.13152 2.86466 4.1379Z"
+                    fill="#333338"
+                  />
+                  <path
+                    id="vector (Stroke)_2"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M19.3633 7.31026C19.6166 7.63802 19.5562 8.10904 19.2285 8.3623L13.6814 12.6486C12.691 13.4138 11.3089 13.4138 10.3185 12.6486L4.77144 8.3623C4.44367 8.10904 4.38328 7.63802 4.63655 7.31026C4.88982 6.98249 5.36083 6.9221 5.6886 7.17537L11.2356 11.4616C11.6858 11.8095 12.3141 11.8095 12.7642 11.4616L18.3113 7.17537C18.6391 6.9221 19.1101 6.98249 19.3633 7.31026Z"
+                    fill="#333338"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="inputContainer">
+            <input
+              required="required"
+              id="passwordField"
+              placeholder="Password"
+              type="password"
+              class="inputField"
+            />
+            <label class="usernameLabel" for="inputField">Password</label>
+            <svg
+              fill="#333338"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 98.166 98.166"
+              class="userIcon"
+              xml:space="preserve"
+            >
+              <g>
+                <g>
+                  <path
+                    d="M68.789,54.943c0-4.256-0.007-9.083-0.007-11.324c0-10.859-8.832-19.694-19.691-19.694
+			c-10.858,0-19.698,8.835-19.698,19.694c0,2.256-0.003,7.08-0.009,11.324c-5.146,0-9.317,4.17-9.317,9.314v24.594
+			c0,5.145,4.171,9.314,9.317,9.314h39.4c5.146,0,9.317-4.17,9.317-9.314V64.254C78.101,59.113,73.929,54.943,68.789,54.943z
+			 M52.666,76.789v7.691c0,1.979-1.602,3.582-3.582,3.582c-1.977,0-3.581-1.604-3.581-3.582v-7.691
+			c-1.747-1.164-2.901-3.146-2.901-5.402c0-3.578,2.904-6.482,6.482-6.482c3.582,0,6.486,2.904,6.486,6.482
+			C55.57,73.641,54.416,75.625,52.666,76.789z M36.888,54.943c0.006-4.246,0.013-9.066,0.013-11.326
+			c0-6.719,5.466-12.186,12.189-12.186c6.716,0,12.184,5.467,12.184,12.186c0,2.238,0.006,7.066,0.006,11.326H36.888z"
+                  />
+                  <path
+                    d="M77.007,14.234c-0.695-0.06-1.334-0.415-1.75-0.976c-3.791-5.102-9.856-8.246-16.31-8.246
+			c-0.396,0-0.793,0.012-1.188,0.035c-0.578,0.034-1.146-0.138-1.608-0.486C52.218,1.603,47.46,0,42.476,0
+			C33.546,0,25.618,5.166,21.9,12.992c-0.351,0.74-1.051,1.253-1.861,1.369c-9.84,1.402-17.43,9.883-17.43,20.103
+			c0,10.296,7.709,18.806,17.656,20.11c1.444-1.359,3.186-2.407,5.123-3.018c0.001-1.699,0.003-3.354,0.004-4.789h-2.478
+			c-6.785,0-12.305-5.52-12.305-12.305s5.52-12.305,12.305-12.305c0.343,0,0.68,0.027,1.015,0.055
+			c1.955,0.151,3.726-1.117,4.202-3.014C29.786,12.605,35.685,8,42.475,8c3.88,0,7.552,1.499,10.339,4.219
+			c0.953,0.929,2.307,1.325,3.609,1.053c0.83-0.173,1.68-0.261,2.524-0.261c4.75,0,8.993,2.671,11.071,6.97
+			c0.73,1.512,2.328,2.411,3.999,2.239c0.416-0.042,0.831-0.063,1.233-0.063c6.785,0,12.306,5.52,12.306,12.305
+			c0,6.785-5.521,12.305-12.306,12.305h-2.47l0.002,4.789c1.937,0.611,3.677,1.658,5.12,3.017
+			c9.944-1.305,17.653-9.815,17.653-20.11C95.558,23.859,87.384,15.126,77.007,14.234z"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <button class="animated-button" id="loginBtn">
+            <svg
+              viewBox="0 0 24 24"
+              class="arr-2"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+              ></path>
+            </svg>
+            <span class="text">Login</span>
+            <span class="circle"></span>
+            <svg
+              viewBox="0 0 24 24"
+              class="arr-1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="illustration">
+        <div id="lottie-animation" style="width: 70%; height: 80%"></div>
+      </div>
+    </div>
+   
+    
+
+    <div id="toast">
+      <div id="toast-lottie-container"></div>
+      <div id="desc">Notification!</div>
+    </div>
+
+    <script src="https://unpkg.com/lottie-web@5.12.0/build/player/lottie.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <script>
+      lottie.loadAnimation({
+        container: document.getElementById("lottie-animation"), // the DOM element
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: "/assets/jsons/login.json", // replace with your Lottie JSON file URL
+      });
+    </script>
+    <script>
+      // Email validation
+      document
+        .querySelector(".animated-button")
+        .addEventListener("click", function (e) {
+          const emailInput = document.getElementById("emailField");
+          const email = emailInput.value;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (!emailRegex.test(email)) {
+            launch_toast("you should enter a valid email","/assets/jsons/infos.json");
+             e.preventDefault(); // prevent form submission or next actions
+          }
+        });
+
+      // Password toggle
+      const passwordInput = document.getElementById("passwordField");
+      const toggleIcon = document.createElement("div");
+
+      // Initial Lottie (eye closed)
+      toggleIcon.innerHTML = `
+    <lottie-player 
+      src="/assets/jsons/hideeye.json" 
+      background="transparent" 
+      speed="1" 
+      style="width: 50px; height: 50px;"  
+      loop 
+      autoplay>
+    </lottie-player>
+  `;
+
+      toggleIcon.style.cursor = "pointer";
+      toggleIcon.style.position = "absolute";
+      toggleIcon.style.right = "0px";
+      toggleIcon.style.top = "50%";
+      toggleIcon.style.transform = "translateY(-50%)";
+
+      const passwordContainer = passwordInput.parentElement;
+      passwordContainer.style.position = "relative";
+      passwordContainer.appendChild(toggleIcon);
+
+      let isPasswordVisible = false;
+
+      toggleIcon.addEventListener("click", () => {
+        isPasswordVisible = !isPasswordVisible;
+        passwordInput.type = isPasswordVisible ? "text" : "password";
+
+        toggleIcon.innerHTML = `
+      <lottie-player 
+        src="${
+          isPasswordVisible
+            ? "/assets/jsons/openeye.json"
+            : "/assets/jsons/hideeye.json"
+        }"
+        background="transparent" 
+        speed="1" 
+        style="${
+          isPasswordVisible
+            ? "width: 25px; height: 25px;position:relative;right:10px"
+            : "width: 50px; height: 50px"
+        }"position:relative;right:10px"  
+        loop 
+        autoplay>
+      </lottie-player>
+    `;
+      });
+    </script>
+    <script>
+      function launch_toast(message, lottieSrc) {
+        const toast = document.getElementById("toast");
+        const desc = document.getElementById("desc");
+        const lottieContainer = document.getElementById(
+          "toast-lottie-container"
+        );
+
+        // Clear old animation if any
+        lottieContainer.innerHTML = "";
+
+        // Create and insert new lottie-player element
+        const lottiePlayer = document.createElement("lottie-player");
+        lottiePlayer.setAttribute("src", lottieSrc);
+        lottiePlayer.setAttribute("background", "transparent");
+        lottiePlayer.setAttribute("speed", "1");
+
+        lottiePlayer.setAttribute("loop", "");
+        lottiePlayer.setAttribute("autoplay", "");
+
+        lottieContainer.appendChild(lottiePlayer);
+
+        // Set message
+        desc.textContent = message;
+
+        // Show toast
+        toast.classList.add("show");
+
+        // Hide toast after 5 seconds
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 5000);
+      }
+
+      document.getElementById("loginBtn").addEventListener("click", () => {
+        const email = document.getElementById("emailField").value.trim();
+        const password = document.getElementById("passwordField").value.trim();
+
+        if (!email || !password) {
+       launch_toast("Please provide all fields", "/assets/jsons/infos.json");
+
+          return;
+        }
+if (email === "admin" && password == "admin123") { 
+    launch_toast("login success", "/assets/jsons/success.json");
+
+    // Wait for 2 seconds then redirect to dashboard
+    setTimeout(function() {
+        window.location.href = "/screens/dashboard.html";  // Redirect to dashboard.html
+    }, 2000);  // 2000 milliseconds = 2 seconds
+
+} else {
+    launch_toast("invalid email or password", "/assets/jsons/infos.json"); 
+}
+
+   
+      });
+      
+    </script>
+  </body>
+</html>

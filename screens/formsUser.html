@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Generated Form</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <link href="/styles/dashboard.css" rel="stylesheet" />
+
+</head>
+
+<body class="min-h-screen flex items-center justify-center " style="width: 100%; display:flex; flex-direction:column">
+  <div class="bg-black py-32 relative" style="width: 100%;" id="image-container">
+    <div class="flex flex-col justify-center items-center">
+      <div class="flex items-center justify-center rounded-full border border-zinc-600 px-2 py-[6px]">
+        <div class="w-5 h-5 bg-zinc-900 rounded-full text-zinc-400 mr-2 p-[4px]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+            <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4">
+              <path d="M19 32c-7.732 0-14-6.268-14-14S11.268 4 19 4s14 6.268 14 14"></path>
+              <path d="M44 18H18v26h26z"></path>
+            </g>
+          </svg>
+        </div>
+        <div class="text-zinc-400 text-sm">
+          Why fill this form ?
+        </div>
+      </div>
+      <div class="relative text-center mt-5 mb-12 text-5xl font-medium">
+        <h1 class="relative text-white pb-3 leading-[65px] z-10 isolate"><br>Submit Your Information Below</h1>
+        <div class="absolute left-1/2 bottom-12 -translate-x-1/2 h-12 w-96 bg-blue-800 blur-[50px] z-[1] opacity-60">
+        </div>
+      </div>
+    </div>
+    <img src="/assets/images/user/form7.png" alt="Decorative"
+      class="absolute bottom-0 left-16 w-60 h-auto object-contain " />
+    <img src="/assets/images/user/line.png" alt="Decorative"
+      class="absolute bottom-18 right-50 w-40 h-auto object-contain " />
+  </div>
+  <div id="formList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  w-[70%] mx-auto"
+    style="gap: 1rem 5rem; margin-top:4rem"></div>
+<div class="w-full min-h-screen flex">
+  <!-- The form: takes 50% -->
+  <form id="form2" class="flex-1 p-10 z-10">
+    <!-- form content here -->
+  </form>
+
+  <!-- Image container: takes 50% and centers image -->
+  <div class="flex-1 flex justify-center items-center p-10 z-0 hidden " id="showimage" >
+    <img src="/assets/images/user/form5.webp"
+         alt="Decorative"
+         class="w-full max-w-[400px] object-contain" />
+  </div>
+</div>
+
+
+
+  <!-- Firebase Auth scripts (optional) -->
+  <script type="module">
+    // Firebase Config
+    const firebaseConfig = {
+      apiKey: "AIzaSyABs3WLrvZYk0l7bMCifVdTa0D8dylC_Os",
+      authDomain: "marwaproject-c73df.firebaseapp.com",
+      projectId: "marwaproject-c73df",
+      storageBucket: "marwaproject-c73df.appspot.com",
+      messagingSenderId: "945218770766",
+      appId: "1:945218770766:web:ba93e547eab2837bb4f01f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const formId = new URLSearchParams(window.location.search).get("id");
+    const form = document.getElementById("form2");
+    const formList = document.getElementById("formList");
+    let formDataFromFirestore = null;
+
+    if (formId) {
+      formList.style.display = "none"; // hide list
+      loadForm(formId);
+    } else {
+      form.style.display = "none"; // hide form
+      loadFormList();
+    }
+
+    async function loadFormList() {
+      const snapshot = await db.collection("forms").get();
+      const container = document.getElementById("formList");
+
+      if (snapshot.empty) {
+        container.innerHTML = "<p class='text-red-500' >No forms available.</p>";
+        return;
+      }
+
+      container.innerHTML = "";
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const title = (data.formTitle?.value) || "Untitled Form";
+        const description = (data.formDesc?.value) || "";
+        const formType = data.formType || "N/A";
+
+        // Format createdAt (if available)
+        let createdAt = "Unknown date";
+        if (data.createdAt) {
+          const dateObj = new Date(data.createdAt);
+          const day = String(dateObj.getDate()).padStart(2, '0');
+          const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+          const year = dateObj.getFullYear();
+          createdAt = `${day}-${month}-${year}`;
+        }
+
+
+        const card = document.createElement("div");
+        card.classList.add("w-full");
+        card.className = "task rounded-xl border border-gray-200 bg-white p-5 shadow-theme-sm dark:border-gray-800 dark:bg-white/5 mt-6 mb-6";
+
+        card.innerHTML = `
+    <div>
+      <div class="flex flex-row justify-between items-center mb-8">
+        <h4 class="mb-2 text-base text-gray-800 dark:text-white/90">${title}</h4>
+        <button class="open-form-btn inline-flex items-center gap-2 rounded-lg bg-white px-4 py-3 text-sm font-medium text-gray-700 shadow-theme-xs ring-1 ring-gray-300 transition hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]">
+          <svg class="stroke-current" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+            <path stroke="" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2 8-8m0 0v5m0-5h-5" />
+          </svg>
+          Open
+        </button>
+      </div>
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">${description}</p>
+
+<div class="my-4 relative group overflow-hidden rounded-xl border-[0.5px] border-gray-200 dark:border-gray-800">
+  <!-- Base Image -->
+  <img src="/assets/images/task/task.png" 
+       alt="task"
+       class="w-full transition-transform duration-300 transform group-hover:scale-105" />
+
+  <!-- Overlay Image -->
+  <div class="absolute inset-0 flex justify-center items-center">
+    <img src="/assets/images/user/form2.png" 
+         alt="Overlay"
+         class="w-32 h-32 transition-transform duration-300 transform group-hover:scale-105" />
+  </div>
+</div>
+
+
+
+      <div class="flex items-start justify-between gap-6">
+        <div class="flex items-center gap-3">
+       
+          <span class="flex cursor-pointer items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.5" d="M3 10C3 6.22876 3 4.34315 4.17157 3.17157C5.34315 2 7.22876 2 11 2H13C16.7712 2 18.6569 2 19.8284 3.17157C21 4.34315 21 6.22876 21 10V14C21 17.7712 21 19.6569 19.8284 20.8284C18.6569 22 16.7712 22 13 22H11C7.22876 22 5.34315 22 4.17157 20.8284C3 19.6569 3 17.7712 3 14V10Z" fill="#DDDDDD"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 10C7.25 9.58579 7.58579 9.25 8 9.25H16C16.4142 9.25 16.75 9.58579 16.75 10C16.75 10.4142 16.4142 10.75 16 10.75H8C7.58579 10.75 7.25 10.4142 7.25 10Z" fill="#1C274C"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 14C7.25 13.5858 7.58579 13.25 8 13.25H13C13.4142 13.25 13.75 13.5858 13.75 14C13.75 14.4142 13.4142 14.75 13 14.75H8C7.58579 14.75 7.25 14.4142 7.25 14Z" fill="#1C274C"/>
+</svg> ${formType}
+          </span>
+        </div>
+      </div>
+    </div>
+  `;
+
+        const openBtn = card.querySelector(".open-form-btn");
+        openBtn.addEventListener("click", (e) => {
+        
+          e.preventDefault(); // prevent any default anchor or button behavior
+          window.open(`${window.location.pathname}?id=${doc.id}`, '_blank');
+
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    async function loadForm(formId) {
+
+      const showimage = document.getElementById("showimage");
+
+
+      if(showimage){
+       showimage.style.display = 'flex';
+      }
+      if (formId) {
+  const ImageContainer = document.getElementById('image-container');
+  if (ImageContainer) ImageContainer.style.display = 'none';
+}
+      const formRef = db.collection("forms").doc(formId);
+      const formSnap = await formRef.get();
+
+
+      if (!formSnap.exists) {
+        form.innerHTML = "<p class='text-red-500'>Form not found</p>";
+        return;
+      }
+
+      formDataFromFirestore = formSnap.data();
+const title = formDataFromFirestore.formTitle?.value || "Untitled Form";
+const description = formDataFromFirestore.formDesc?.value || "";
+
+form.innerHTML = `
+  <div id="wrappedfields"
+    class="no-scrollbar relative w-full max-w-[700px] overflow-y-auto rounded-3xl bg-white p-6 dark:bg-gray-900 lg:p-11">
+    <div class="px-2">
+      <div class="mb-6">
+        <h3 class="text-2xl font-semibold text-gray-800 dark:text-white" style='font-size:3rem'>${title}</h3>
+        <span class="text-sm text-gray-500 dark:text-gray-400">${description}</span>
+      </div>
+      <div class="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
+        ${
+          (() => {
+  const entries = Object.entries(formDataFromFirestore)
+    .filter(([name]) =>
+      !["formType", "createdAt", "title", "description", "formTitle", "formDesc"].includes(name)
+    );
+
+  const emailFields = entries.filter(([name, config]) =>
+    config.type === "email" || name.toLowerCase().includes("email")
+  );
+
+  const checkboxFields = entries.filter(([_, config]) => config.type === "checkbox");
+
+  const otherFields = entries.filter(([name, config]) =>
+    !emailFields.some(([emailName]) => emailName === name) &&
+    !checkboxFields.some(([checkboxName]) => checkboxName === name)
+  );
+
+  return [
+    ...emailFields,
+    ...otherFields,
+    ...checkboxFields
+  ]
+    .map(([name, config]) => renderField(name, config))
+    .join("");
+})()
+
+        }
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" 
+    class="flex w-full justify-center rounded-lg bg-brand-500 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-600 sm:w-auto mt-6" 
+    style="width:120px;">
+    Save
+  </button>
+`;
+
+      }
+
+    function renderField(name, config) {
+      const label = name.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+      const baseClass = `dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30`;
+
+      switch (config.type) {
+        case "input":
+        case "email":
+          return `
+            <div class="sm:col-span-2">
+              <label class="block mb-1.5 text-sm font-medium text-gray-700 dark:text-gray-400">${label}</label>
+              <input type="text" name="${name}" value="${config.value || ''}" class="${baseClass}" />
+            </div>`;
+        case "textarea":
+          return `
+            <div class="sm:col-span-2">
+              <label class="block mb-1.5 text-sm font-medium text-gray-700 dark:text-gray-400">${label}</label>
+              <textarea name="${name}" rows="4" class="${baseClass}">${config.value || ''}</textarea>
+            </div>`;
+        case "select":
+          const options = config.value.split(",").map(opt => `<option value="${opt.trim()}">${opt.trim()}</option>`).join("");
+          return `
+            <div class="sm:col-span-2">
+              <label class="block mb-1.5 text-sm font-medium text-gray-700 dark:text-gray-400">${label}</label>
+              <select name="${name}" class="${baseClass}">${options}</select>
+            </div>`;
+        case "checkbox":
+          return `
+            <div class="sm:col-span-2 flex items-center gap-2">
+              <input type="checkbox" name="${name}" ${config.value ? 'checked' : ''} class="rounded border-gray-300 text-brand-600 shadow-sm focus:ring-brand-500" />
+              <label class="text-sm text-gray-700 dark:text-gray-400">${label}</label>
+            </div>`;
+        default:
+          return "";
+      }
+    }
+
+    // Form Submission
+    document.addEventListener("submit", async (e) => {
+      if (!formDataFromFirestore) return;
+      e.preventDefault();
+
+      const formData = {};
+      const elements = form.elements;
+
+      for (let i = 0; i < elements.length; i++) {
+        const el = elements[i];
+        if (!el.name) continue;
+
+        switch (el.type) {
+          case "checkbox":
+            formData[el.name] = el.checked;
+            break;
+          case "select-one":
+            formData[el.name] = el.value;
+            break;
+          default:
+            formData[el.name] = el.value;
+        }
+      }
+
+      formData.formType = formDataFromFirestore.formType || "unknown";
+      formData.submittedAt = firebase.firestore.FieldValue.serverTimestamp();
+
+      try {
+        await db.collection("usersfeedbacks").add(formData);
+        alert("Form submitted successfully!");
+        form.reset();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("Error submitting form. Please try again.");
+      }
+    });
+  </script>
+
+</body>
+
+</html>

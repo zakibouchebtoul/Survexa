@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif !important;
+  background-color: #ffffff;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.login-section {
+  flex: 2;
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-container {
+     flex: 1;
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #ffffff31;
+}
+.login-section h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  text-align: start;
+}
+
+.login-section p {
+  font-size: 14px;
+  color: #333;
+  max-width: 400px;
+  margin-bottom: 40px;
+  text-align: start;
+}
+
+
+
+button {
+  margin-top: 30px;
+  padding: 12px;
+  width: 50%;
+
+}
+
+
+.illustration {
+  flex: 1.7;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.illustration img{
+    margin-left: 4rem;
+}
+/* From Uiverse.io by vinodjangid07 */ 
+.inputContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 2rem;
+  background-color: #cee0bc60;
+  border-radius: 12px;
+  justify-content: center;
+  
+}
+
+.inputField {
+  border: 0px solid #cee0bc;
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 15px 15px;
+  color: rgb(27, 27, 27);
+  font-weight: 500;
+  outline: none;
+  caret-color: rgb(231, 231, 231);
+  transition-duration: .3s;
+font-family: 'Quicksand', sans-serif;}
+
+.userIcon {
+  position: absolute;
+  fill: #333338;
+  width: 12px;
+  top: -23px;
+  left: -15px;
+  opacity: 0;
+  transition: .2s linear;
+}
+
+.usernameLabel {
+  position: absolute;
+  top: -25px;
+  left: 5px;
+  color: #333338;
+  font-size: 14px;
+  font-weight: 400;
+font-family: 'Quicksand', sans-serif;  overflow: hidden;
+  transition: .2s linear;
+  opacity: 0;
+}
+
+.inputField:focus ~ .usernameLabel,
+.inputField:valid ~ .usernameLabel {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+.inputField:focus ~ .userIcon,
+.inputField:valid ~ .userIcon {
+  transform: translateX(20px);
+  opacity: 1;
+}
+
+.inputField:focus,
+.inputField:valid {
+  background-color: #defad9;
+  transition-duration: .3s;
+}
+
+
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #37633d;
+  box-shadow: 0 0 0 2px #37633d;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: #37633d;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #37633d;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+  top: -1px;
+  font-weight: 700;
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #FFF;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #FFF;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #37633d;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+#toast {
+    visibility: hidden;
+    max-width: 50px;
+    height: 50px;
+    /*margin-left: -125px;*/
+    margin: auto;
+    background-color: #102408;
+    color: #fff;
+    text-align: center;
+   
+ border-radius: 20px;
+    position: fixed;
+    z-index: 1;
+    left: 0;right:0;
+    bottom: 30px;
+    font-size: 17px;
+    white-space: nowrap;
+}
+#toast #toast-lottie-container{
+	width: 50px;
+	height: 100%;
+    padding: 10px;
+    
+    float: left;
+    
+  
+
+    
+    box-sizing: border-box;
+
+    border-radius: 20px;
+    color: #fff;
+}
+#toast #desc{
+
+    
+    color: #fff;
+   
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-right: 14px;
+    
+    overflow: hidden;
+	white-space: nowrap;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 50px} 
+    to {min-width: 350px}
+}
+
+@keyframes expand {
+    from {min-width: 50px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 350px} 
+    to {min-width: 350px}
+}
+
+@keyframes stay {
+    from {min-width: 350px}
+    to {min-width: 350px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@keyframes shrink {
+    from {min-width: 350px;} 
+    to {min-width: 50px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
+}
