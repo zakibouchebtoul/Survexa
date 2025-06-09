@@ -143,7 +143,7 @@
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "/assets/jsons/login.json", // replace with your Lottie JSON file URL
+        path: "Survexa/assets/jsons/login.json", // replace with your Lottie JSON file URL
       });
     </script>
     <script>
@@ -156,7 +156,7 @@
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
           if (!emailRegex.test(email)) {
-            launch_toast("you should enter a valid email","/assets/jsons/infos.json");
+            launch_toast("you should enter a valid email","Survexa/assets/jsons/infos.json");
              e.preventDefault(); // prevent form submission or next actions
           }
         });
@@ -168,7 +168,7 @@
       // Initial Lottie (eye closed)
       toggleIcon.innerHTML = `
     <lottie-player 
-      src="/assets/jsons/hideeye.json" 
+      src="Survexa/assets/jsons/hideeye.json" 
       background="transparent" 
       speed="1" 
       style="width: 50px; height: 50px;"  
@@ -197,8 +197,8 @@
       <lottie-player 
         src="${
           isPasswordVisible
-            ? "/assets/jsons/openeye.json"
-            : "/assets/jsons/hideeye.json"
+            ? "Survexa/assets/jsons/openeye.json"
+            : "Survexa/assets/jsons/hideeye.json"
         }"
         background="transparent" 
         speed="1" 
@@ -252,20 +252,20 @@
         const password = document.getElementById("passwordField").value.trim();
 
         if (!email || !password) {
-       launch_toast("Please provide all fields", "/assets/jsons/infos.json");
+       launch_toast("Please provide all fields", "Survexa/assets/jsons/infos.json");
 
           return;
         }
 if (email === "admin" && password == "admin123") { 
-    launch_toast("login success", "/assets/jsons/success.json");
+    launch_toast("login success", "Survexa/assets/jsons/success.json");
 
     // Wait for 2 seconds then redirect to dashboard
     setTimeout(function() {
-        window.location.href = "/screens/dashboard.html";  // Redirect to dashboard.html
+        window.location.href = "Survexa/screens/dashboard.html";  // Redirect to dashboard.html
     }, 2000);  // 2000 milliseconds = 2 seconds
 
 } else {
-    launch_toast("invalid email or password", "/assets/jsons/infos.json"); 
+    launch_toast("invalid email or password", "Survexa/assets/jsons/infos.json"); 
 }
 
    
